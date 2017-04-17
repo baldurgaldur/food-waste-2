@@ -8,22 +8,25 @@ import org.glassfish.jersey.test.JerseyTest;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
-import com.babar.MyResource;
+import com.babar.web.FoodService;
 
-public class MyResourceTest extends JerseyTest {
+public class FoodServiceTest extends JerseyTest 
+{
 
     @Override
-    protected Application configure() {
-        return new ResourceConfig(MyResource.class);
+    protected Application configure() 
+    {
+        return new ResourceConfig(FoodService.class);
     }
 
     /**
      * Test to see that the message "Got it!" is sent in the response.
      */
     @Test
-    public void testGetIt() {
-        final String responseMsg = target().path("myresource").request().get(String.class);
+    public void testGetIt() 
+    {
+        final String responseMsg = target().path("web/food").request().get(String.class);
 
-        assertEquals("Hello, Heroku!", responseMsg);
+        assertEquals("Get food list", responseMsg);
     }
 }
